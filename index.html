@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sankamithra M | Portfolio</title>
+
+    <style>
+        /* GENERAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --background: #0b1020;
+            --card: #141c30;
+            --primary: #8b9cff;
+            --secondary: #6ee7d2;
+            --text: #f1f5f9;
+            --muted: #a8b4cc;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            background: rgba(11, 16, 32, 0.95);
+            border-bottom: 1px solid #273149;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 70px 0;
+        }
+
+        .hero-content {
+            flex: 1.5;
+        }
+
+        .hero-label {
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.15;
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 17px;
+            max-width: 650px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #0b1020;
+        }
+
+        .btn-secondary {
+            border: 1px solid #59647d;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .profile-card {
+            flex: 0.8;
+            background: var(--card);
+            border: 1px solid #29334b;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #0b1020;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .profile-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .profile-card p {
+            color: var(--muted);
+        }
+
+        .tag {
+            display: inline-block;
+            background: #222c45;
+            padding: 7px 12px;
+            border-radius: 20px;
+            margin: 5px 3px;
+            font-size: 12px;
+        }
+
+        /* COMMON SECTION STYLES */
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-label {
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin: 10px 0 15px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 35px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid #29334b;
+            border-radius: 15px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .card-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* ABOUT */
+
+        #about {
+            background: #0e1528;
+        }
+
+        /* EXPERIENCE */
+
+        .experience-card {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .experience-date {
+            color: var(--secondary);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .experience-card h3 {
+            margin: 10px 0;
+            font-size: 23px;
+        }
+
+        .experience-card h4 {
+            color: var(--muted);
+            margin-bottom: 18px;
+            font-weight: normal;
+        }
+
+        .experience-card ul {
+            padding-left: 22px;
+            color: var(--muted);
+        }
+
+        .experience-card li {
+            margin-bottom: 12px;
+        }
+
+        /* SKILLS */
+
+        .skills-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .skill-group {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #29334b;
+        }
+
+        .skill-group h3 {
+            margin-bottom: 18px;
+        }
+
+        .skill {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 7px;
+            border: 1px solid #38435c;
+            color: var(--muted);
+            margin: 4px;
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+
+        .project-type {
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* EDUCATION */
+
+        #education {
+            background: #0e1528;
+        }
+
+        /* CONTACT */
+
+        .contact-box {
+            background: linear-gradient(120deg, #202b49, #142c38);
+            padding: 45px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin-top: 10px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #29334b;
+            text-align: center;
+            padding: 25px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 850px) {
+            .hero {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .profile-card {
+                max-width: 500px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+                font-size: 13px;
+            }
+
+            .grid,
+            .skills-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .section-title {
+                font-size: 29px;
+            }
+
+            .contact-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">Sankamithra<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <main>
+        <section class="hero container" id="home">
+
+            <div class="hero-content">
+                <div class="hero-label">
+                    Analyst | Strategy | Problem Solver
+                </div>
+
+                <h1>
+                    Turning complex problems into
+                    <span>clear solutions.</span>
+                </h1>
+
+                <p>
+                    Hello, I'm Sankamithra M. I have over two years of
+                    experience in program coordination, performance analysis,
+                    stakeholder management, project execution, and technical
+                    mentoring. I enjoy identifying problems, analyzing data,
+                    and turning insights into actionable improvements.
+                </p>
+
+                <div class="buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        Explore My Work
+                    </a>
+
+                    <a href="#contact" class="btn btn-secondary">
+                        Contact Me
+                    </a>
+
+                    <a href="https://github.com/Sara-winget"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn-secondary">
+                        GitHub ↗
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="avatar">SM</div>
+
+                <h2>Sankamithra M</h2>
+
+                <p>
+                    Analyst | Program Coordination |
+                    Stakeholder Management
+                </p>
+
+                <div style="margin-top: 20px;">
+                    <span class="tag">Data Analysis</span>
+                    <span class="tag">Strategy</span>
+                    <span class="tag">Leadership</span>
+                    <span class="tag">Problem Solving</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="container">
+
+                <div class="section-label">About Me</div>
+
+                <h2 class="section-title">
+                    Analytical thinking meets execution.
+                </h2>
+
+                <p class="section-description">
+                    My experience combines data-driven thinking, people
+                    management, and project coordination. I focus on
+                    understanding what is happening, identifying why it is
+                    happening, and recommending what should happen next.
+                </p>
+
+                <div class="grid">
+
+                    <div class="card">
+                        <div class="card-icon">🔎</div>
+                        <h3>Analysis & Insights</h3>
+                        <p>
+                            Analyze performance data, identify gaps,
+                            investigate root causes, and recommend
+                            practical improvements.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>Planning & Execution</h3>
+                        <p>
+                            Coordinate teams, track milestones, monitor
+                            progress, manage dependencies, and support
+                            timely project delivery.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">🤝</div>
+                        <h3>Stakeholder Management</h3>
+                        <p>
+                            Collaborate across teams, communicate
+                            expectations, provide feedback, and align
+                            people toward shared goals.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <div class="container">
+
+                <div class="section-label">Experience</div>
+
+                <h2 class="section-title">My Professional Journey</h2>
+
+                <p class="section-description">
+                    Experience in program operations, student project
+                    coordination, performance analysis, and mentoring.
+                </p>
+
+                <div class="experience-card">
+
+                    <div class="experience-date">
+                        AUGUST 2024 – OCTOBER 2026
+                    </div>
+
+                    <h3>
+                        Technical Mentor, Project & Placement Coordinator
+                    </h3>
+
+                    <h4>Kalvium</h4>
+
+                    <ul>
+                        <li>
+                            <strong>Performance Analysis:</strong>
+                            Analyzed placement performance data to identify
+                            gaps and provide actionable insights for
+                            targeted interventions.
+                        </li>
+
+                        <li>
+                            <strong>Project Coordination:</strong>
+                            Coordinated 10+ student project teams through
+                            daily stand-ups, weekly reviews, progress
+                            tracking, and cross-team follow-ups.
+                        </li>
+
+                        <li>
+                            <strong>Performance Improvement:</strong>
+                            Assessed individual strengths and development
+                            gaps and designed tailored improvement strategies.
+                        </li>
+
+                        <li>
+                            <strong>Operations & Leadership:</strong>
+                            Supported campus operations during the Campus
+                            Manager's absence and helped onboard a new manager.
+                        </li>
+
+                        <li>
+                            <strong>Stakeholder Collaboration:</strong>
+                            Worked with product, design, central, and program
+                            delivery teams to improve coordination and execution.
+                        </li>
+
+                        <li>
+                            <strong>Mentoring:</strong>
+                            Mentored students, trained interns and new joiners,
+                            and simplified technical concepts for learners.
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="container">
+
+                <div class="section-label">My Capabilities</div>
+
+                <h2 class="section-title">Skills & Tools</h2>
+
+                <p class="section-description">
+                    A combination of analytical, managerial, communication,
+                    and technical skills.
+                </p>
+
+                <div class="skills-layout">
+
+                    <div class="skill-group">
+                        <h3>Analysis & Strategy</h3>
+
+                        <span class="skill">Data Analysis</span>
+                        <span class="skill">Root Cause Analysis</span>
+                        <span class="skill">Gap Analysis</span>
+                        <span class="skill">Critical Thinking</span>
+                        <span class="skill">Strategic Planning</span>
+                        <span class="skill">Problem Solving</span>
+                        <span class="skill">Performance Analysis</span>
+                        <span class="skill">Continuous Improvement</span>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>Program & Project Management</h3>
+
+                        <span class="skill">Program Coordination</span>
+                        <span class="skill">Project Tracking</span>
+                        <span class="skill">Stakeholder Management</span>
+                        <span class="skill">Prioritization</span>
+                        <span class="skill">Risk Identification</span>
+                        <span class="skill">Action Planning</span>
+                        <span class="skill">Team Leadership</span>
+                        <span class="skill">Cross-functional Collaboration</span>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>Analytical Tools</h3>
+
+                        <span class="skill">Advanced Excel</span>
+                        <span class="skill">Google Sheets</span>
+                        <span class="skill">SQL</span>
+                        <span class="skill">PowerPoint</span>
+                        <span class="skill">Power BI — Learning</span>
+                        <span class="skill">Jira — Learning</span>
+                    </div>
+
+                    <div class="skill-group">
+                        <h3>Technical Skills</h3>
+
+                        <span class="skill">MERN Stack</span>
+                        <span class="skill">JavaScript ES6</span>
+                        <span class="skill">HTML</span>
+                        <span class="skill">CSS</span>
+                        <span class="skill">Java</span>
+                        <span class="skill">Python</span>
+                        <span class="skill">C++</span>
+                        <span class="skill">Data Structures & Algorithms</span>
+                        <span class="skill">REST APIs</span>
+                        <span class="skill">Git & GitHub</span>
+                        <span class="skill">Docker</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="container">
+
+                <div class="section-label">My Work</div>
+
+                <h2 class="section-title">Projects & Initiatives</h2>
+
+                <p class="section-description">
+                    A selection of my technical projects, coordination work,
+                    and leadership initiatives.
+                </p>
+
+                <div class="grid">
+
+                    <div class="card">
+                        <div class="project-type">Web Development</div>
+
+                        <h3>MERN E-commerce Application</h3>
+
+                        <p>
+                            A full-stack application exploring product
+                            management and e-commerce workflows using
+                            MongoDB, Express, React, and Node.js.
+                        </p>
+
+                        <a class="project-link"
+                           href="https://github.com/Sara-winget"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View GitHub ↗
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-type">Web Development</div>
+
+                        <h3>Blogging Application</h3>
+
+                        <p>
+                            A web application project focused on creating,
+                            managing, and organizing blog content.
+                        </p>
+
+                        <a class="project-link"
+                           href="https://github.com/Sara-winget"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View GitHub ↗
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-type">Web Development</div>
+
+                        <h3>Library Management System</h3>
+
+                        <p>
+                            An application project exploring common library
+                            management workflows and software development
+                            fundamentals.
+                        </p>
+
+                        <a class="project-link"
+                           href="https://github.com/Sara-winget"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View GitHub ↗
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-type">Leadership</div>
+
+                        <h3>College Marketing Club</h3>
+
+                        <p>
+                            As club president, initiated outreach to nearby
+                            nurseries to sell student-club products such as
+                            vermicompost and saplings, and supported social
+                            media campaigns.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-type">Project Coordination</div>
+
+                        <h3>Student Project Tracking</h3>
+
+                        <p>
+                            Coordinated 10+ student teams through regular
+                            stand-ups, weekly reviews, progress monitoring,
+                            and cross-team follow-ups.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-type">Performance Analysis</div>
+
+                        <h3>Placement Gap Analysis</h3>
+
+                        <p>
+                            Analyzed placement performance information to
+                            identify development gaps and support targeted
+                            mentoring interventions.
+                        </p>
+                    </div>
+
+                </div>
+
+                <p style="color: var(--muted); margin-top: 20px;">
+                    Note: Replace generic project descriptions and GitHub
+                    links with the exact repository links and verified
+                    project outcomes before publishing.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education">
+            <div class="container">
+
+                <div class="section-label">Education</div>
+
+                <h2 class="section-title">Academic Background</h2>
+
+                <div class="grid">
+
+                    <div class="card">
+                        <h3>Bachelor of Engineering</h3>
+
+                        <p>
+                            CGPA: 8.51 / 10
+                            <br>
+                            Graduated with Distinction
+                            <br>
+                            2020 – 2024
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Higher Secondary</h3>
+
+                        <p>
+                            Percentage: 80%
+                            <br>
+                            2018 – 2020
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>10th Standard</h3>
+
+                        <p>
+                            Percentage: 94.5%
+                            <br>
+                            2017 – 2018
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="container">
+
+                <div class="contact-box">
+
+                    <div>
+                        <div class="section-label">Contact Me</div>
+
+                        <h2 class="section-title">
+                            Let's create something meaningful.
+                        </h2>
+
+                        <p>
+                            I'm interested in opportunities in Business
+                            Analysis, Product Analysis, Strategy, and
+                            Project Coordination.
+                        </p>
+
+                        <p>
+                            Coimbatore, Tamil Nadu, India
+                        </p>
+                    </div>
+
+                    <div class="buttons">
+
+                        <a href="mailto:sankamithra1614@gmail.com"
+                           class="btn btn-primary">
+                            Email Me
+                        </a>
+
+                        <a href="https://github.com/Sara-winget"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-secondary">
+                            GitHub ↗
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © <span id="year"></span> Sankamithra M.
+            Built with HTML and internal CSS.
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
